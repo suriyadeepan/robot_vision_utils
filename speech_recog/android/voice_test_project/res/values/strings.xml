@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">VoiceTest</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="bt_speak_up">Speak Up</string>
+    <string name="tv_def">Whatever u speak goes here</string>
+    <string name="bt_click_me">click me</string>
+    <string name="blah_blah">                  Robotic Vision Implementation \n                                   PEC</string>
+
+</resources>
