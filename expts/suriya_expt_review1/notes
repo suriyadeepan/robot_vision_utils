@@ -1,0 +1,3 @@
+// Simple procedures
+
+1. cloning a Mat => dst_mat=src_mat.clone();

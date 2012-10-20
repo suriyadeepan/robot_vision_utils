@@ -1,0 +1,7 @@
+-> these are the some experiments done the night before the first review
+
+-> compile these .cpp files using cv_compile : (present in this folder)
+	* put the cv_compile in system path for convenience
+	* usage: "cv_compile filename.cpp" (without quotes)
+	* will generate output file "filename" which is executable
+
