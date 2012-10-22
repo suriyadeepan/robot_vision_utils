@@ -1,0 +1,48 @@
+1. Backup ssh keys
+
+-> cd ~/.ssh/
+-> mkdir key_backup
+-> mv *.pub ./key_backup/
+
+2. Generate private ssh keys
+
+->  ssh-keygen -t rsa -C "developer.rps@gmail.com"
+- Enter file in which to save the key: filename
+- Enter passphrase : *****
+
+3. Add private ssh key to git.gitorious.org account
+
+-> sudo apt-get install xclip
+-> xclip -sel clip < ~/.ssh/filename.pub
+
+- go to account setting in the user page of git.gitorious.org
+- Go to your Account Settings
+- Click ssh keys
+- Click "Add SSH key"
+- Paste your key into keyfield
+- Click Add key
+
+- Check whether ssh key is successfully added
+->  ssh -v git@gitorious.org
+
+4. Clone the remote repo
+
+-> mkdir ~/proj_name/
+-> cd ~/proj_name
+-> git clone git://gitorious.org/athena/athena
+
+5. Adding files to remote repo
+
+-> cd ~/proj_name
+-> nano someFile.txt
+- Add some msg to it, save and exit
+-> git add someFile.txt
+-> git status
+-> git commit -a
+-> git remote set-url --push origin git@gitorious.org:athena/athena.git
+-> git push origin master
+("git push origin master" -- only for the first time; next time onwards -> "git push")
+
+6. Getting files from remote repo
+-> git pull
+
