@@ -1,0 +1,2 @@
+-> trying to compile a simple program (led blinking)
+	which includes <avr/io.h> header with gcc
