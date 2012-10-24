@@ -38,7 +38,15 @@
 - Add some msg to it, save and exit
 -> git add someFile.txt
 -> git status
+
 -> git commit -a
+#	opens a file in nano editor
+#	where commit msg shld be entered
+# 	instead $git commit -a -m "any msg for commit"
+#		can be done
+
+
+
 -> git remote set-url --push origin git@gitorious.org:athena/athena.git
 -> git push origin master
 ("git push origin master" -- only for the first time; next time onwards -> "git push")
