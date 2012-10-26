@@ -1,0 +1,5 @@
+* trying to setup git on laptop
+
+* clone the remote repository
+
+* now trying to create a txt file and push it to remote repo
