@@ -1,0 +1,26 @@
+| ALGORITHM BEGIN |
+-------------------
+Start
+
+Initialize serial port and PWM pins.
+
+In infinite loop
+	Wait for a command thro serial port.
+	Do actions based on the command - using switch case
+
+------------------
+| ALGORITHM END  |
+------------------
+
+|---------------------------------------------------------------------------------------------------------|
+  Sub routines
+|--------------|
+PWM operations: i remember 4 pwm pins we have(in atmega16)
+ used to run servos -  two for camera and one or two for grabber
+
+Locomotion used DC motors and we have configure any two free pins on them. find them by doing experiments...
+
+here are the list of commands. you should get some idea
+http://making-of-athena.blogspot.in/2012/10/software-design-for-robot-rev-01.html
+
+	
