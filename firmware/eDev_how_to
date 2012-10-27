@@ -1,2 +1,71 @@
+* Install necessary packages
+
 1. sudo apt-get install gcc-avr
 2. sudo apt-get install avrdude
+3. sudo apt-get install avr-libc 
+
+* Sample code
+
+#include<avr/io.h>
+
+void main()
+{
+
+}
+
+* Compiling code
+	Steps(2) -> .c => .elf => .hex
+
+	$ avr-gcc -Os -mmcu=$2 file_name.c -o file_name.elf
+	$ avr-objcopy -j .text -O ihex file_name.elf file_name.hex
+
+* Compilation script
+
+	-> refer file ./avr_compile
+
+* Uploading code
+	
+	$ sudo avrdude -p part_name -c programmer_id -U flash:w:file_name.hex
+	
+	# part_name => m16, m8
+	# prog_id => usbasp
+	# "flash" => programs flash
+	# "w" => write mode
+	# shld be run as super user => "sudo"
+
+* Upload Script
+
+	-> refer file ./avr_upload
+
+* Compiler optimization
+
+	-> specify an option -Ox while compiling
+		(avr-gcc -Ox ... )
+	-> x => optimization levels
+	-> "-Os" => "s"=> small => we use "s"
+		for smaller code
+
+* Sample Code - LED Blinking
+
+	-> refer to file led_blink.c
+	-> set FCPU in the *.c file based on 
+		osc. running in uC (kno that by reading fuses)
+			(more on FUSE BITS section)
+
+* FUSE BITS:
+
+	# read
+	$ avrdude -p m16 -c usbasp -U fuse_name:r:file_name.txt:h
+		-> fuse_name => lfuse,hfuse,lock
+		-> "r" => read
+		-> fuse value "h" in hex format 
+			stored in file_name.txt file
+
+	# write
+	$ avrdude -p m16 -c usbasp -U fuse_name:w:0x82:m
+		-> "0x82" => sample fuse value
+		-> "m" => immediate ( use value in cmd directly )
+		-> "w" => write
+	
+	-> make use of AVR fuse CALC available online
+
