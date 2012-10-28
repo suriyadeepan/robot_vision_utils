@@ -1,30 +1,21 @@
-if [[ $1 == '--help' ]] 
-then
-echo
-echo '***********************************'
-echo Usage: avr_compile filename atmegaX
-echo note: filename without extensions
-echo 'X -> 8, 16, etc.'
-echo '***********************************' 
-echo
+if [[ $1 == '--help' ]] then
+	echo
+	echo '***********************************'
+	echo Usage: avr_compile filename atmegaX
+	echo note: filename without extensions
+	echo 'X -> 8, 16, etc.'
+	echo '***********************************' 
+	echo
 
 else
+	if avr-gcc -Os -mmcu=$2 $1.c -o $1.elf	then
+		if avr-objcopy -j .text -O ihex $1.elf $1.hex then
+			echo $1.hex generated...
+		else
+			echo problem encountered while generating $1.hex
+		fi
 
-
-if avr-gcc -Os -mmcu=$2 $1.c -o $1.elf
-then
-
-if avr-objcopy -j .text -O ihex $1.elf $1.hex
-then
-echo $1.hex generated...
-else
-echo problem encountered while generating $1.hex
-fi
-
-else
-echo problem encountered while generating $1.elf
-
-fi
-
-
+	else
+		echo problem encountered while generating $1.elf
+	fi
 fi
