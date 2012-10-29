@@ -3,6 +3,7 @@
  * Author  : Selvakumar       *
  * Date    : 28/10/2012       * 
  ******************************/
+<<<<<<< HEAD
 
 /* compiled for testing in pc. so needed to be commented
 
@@ -49,10 +50,22 @@ int arm_contract();
 int arm_dilate();
 int arm_up();
 int arm_down();
+=======
+#include "athena.h"
+
+int USART_receive()
+{
+  int num;
+  printf("\nEnter a number ");
+  scanf("%d",&num);
+  return num;
+}
+>>>>>>> 4ca006d78148e4739b4519c50cd815a39315fe39
 
 /* array of function pointers        *
  * datatype (*fp[])(argument list);  *
  */
+<<<<<<< HEAD
 int (*loco_control[])() = { loco_forward,
 			    loco_backward,
 			    loco_turn_right,
@@ -62,19 +75,36 @@ int (*loco_control[])() = { loco_forward,
 
 
 int (*arm_control[])() = {  arm_contract,
+=======
+/* TODO: will be moved to athena.c soon */
+int (*loco_control[])() = {  loco_forward,
+			     loco_backward,
+			     loco_turn_right,
+			     loco_turn_left,
+			     loco_turn_around 
+                          };
+
+
+int (*arm_control[])() = {  arm_contract, 
+>>>>>>> 4ca006d78148e4739b4519c50cd815a39315fe39
 			    arm_dilate,
 			    arm_up,
 			    arm_down
                           };
 
 
+<<<<<<< HEAD
 int (*cam_control[])() = { cam_look_up,
+=======
+int (*cam_control[])() = {  cam_look_up,
+>>>>>>> 4ca006d78148e4739b4519c50cd815a39315fe39
 			    cam_look_down,
 			    cam_look_left,
 			    cam_look_right
                           };
 
 
+<<<<<<< HEAD
 /* other utility functions */
 
 int USART_receive()
@@ -85,6 +115,8 @@ int USART_receive()
   return num;
 }
 
+=======
+>>>>>>> 4ca006d78148e4739b4519c50cd815a39315fe39
 int main()
 {
   int command;
@@ -97,6 +129,7 @@ int main()
     command = USART_receive();
     if(command > 0){
       
+<<<<<<< HEAD
       if(command <= 10){
 	command = command - 1;
 	loco_control[command]();
@@ -109,6 +142,20 @@ int main()
       }
       else if(command <= 30){
 	command = command -21;
+=======
+      if(command <= LOCO_CONT_END){
+	command = command - (LOCO_CONT_BEGIN+1);
+	loco_control[command]();
+	continue;
+      }
+      else if (command <= CAM_CONT_END){
+	command = command - (CAM_CONT_BEGIN+1);
+	cam_control[command]();
+	continue;
+      }
+      else if(command <= ARM_CONT_END){
+	command = command - (ARM_CONT_BEGIN+1);
+>>>>>>> 4ca006d78148e4739b4519c50cd815a39315fe39
 	arm_control[command]();
 	continue;
       }
@@ -119,6 +166,7 @@ int main()
 
 }
 
+<<<<<<< HEAD
 
 int loco_forward()
 {
@@ -198,3 +246,5 @@ int arm_down()
   printf("\n %d",ARM_DOWN);
   
 }
+=======
+>>>>>>> 4ca006d78148e4739b4519c50cd815a39315fe39
