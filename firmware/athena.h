@@ -75,4 +75,11 @@ int arm_down();
 
 int USART_receive();
 
+typedef int (*Fp_Control)();
+
+Fp_Control loco_control[LOCO_CONT_LEN];
+Fp_Control cam_control[CAM_CONT_LEN];
+Fp_Control arm_control[ARM_CONT_LEN];
+
+
 #endif /* _ATHENA_H_ */

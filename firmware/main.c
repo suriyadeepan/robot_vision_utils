@@ -13,32 +13,6 @@ int USART_receive()
   return num;
 }
 
-/* array of function pointers        *
- * datatype (*fp[])(argument list);  *
- */
-/* TODO: will be moved to athena.c soon */
-int (*loco_control[])() = {  loco_forward,
-			     loco_backward,
-			     loco_turn_right,
-			     loco_turn_left,
-			     loco_turn_around 
-                          };
-
-
-int (*arm_control[])() = {  arm_contract, 
-			    arm_dilate,
-			    arm_up,
-			    arm_down
-                          };
-
-
-int (*cam_control[])() = {  cam_look_up,
-			    cam_look_down,
-			    cam_look_left,
-			    cam_look_right
-                          };
-
-
 int main()
 {
   int command;
