@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ $1 = uC ]; then
+    avr-gcc -mmcu=atmega16 -o main.elf main.c
+    avr-objcopy -O ihex main.elf main.hex
+elif [ $1 = PC ]; then
+    make
+elif [ $1 = clean ]; then
+    rm -f *.[oa]
+    rm -f *.hex
+    rm -f *.elf
+    rm -f *.srec
+    rm -f *.map
+fi
+
+
