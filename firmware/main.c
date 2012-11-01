@@ -6,17 +6,15 @@
 #include "athena.h"
 #define F_CPU 1200000UL
 
-int USART_receive()
+#ifdef FOR_PC
+receive()
 {
-
-#ifdef DEBUG_PC
   int num;
   printf("\nEnter a number ");
   scanf("%d",&num);
   return num;
-
-#endif /* DEBUG_PC */
 }
+#endif /* FOR_PC */
 
 int main()
 {
@@ -28,8 +26,9 @@ int main()
   
   while(1){
        
-#ifdef DEBUG_PC
+#ifdef FOR_PC
     /* used when compiling for testing in PC, it is uncommon, but I use */
+    command = receive();
    if(command > 0){
       
       if(command <= LOCO_CONT_END){
@@ -49,7 +48,7 @@ int main()
       }
 
    }
-#endif  /* DEBUG_PC */
+#endif  /* FOR_PC */
 
   }/* end of while */
 

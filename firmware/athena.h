@@ -1,23 +1,28 @@
-/****************************** 
- * Program : Firmware for uC  *
- * Author  : Selvakumar       *
- * Date    : 28/10/2012       * 
- ******************************/
+/************************************************ 
+ * Program : Firmware for uC                    *
+ * Author  : Selvakumar                         *
+ * Blog    : making-of-athena.blogspot.in       *
+ * Date    : 28/10/2012                         * 
+ ************************************************/
 
 
 #ifndef _ATHENA_H_
 #define _ATHENA_H_
 
 /* un/comment the following #defines for debugging purpose*/
-//#define DEBUG_PC 1 
-//#define DEBUG_uC 1
+//#define FOR_PC 1 
+//#define FOR_uC 1
 
 /* uncomment the following #includes if compiled for uC */
+#ifdef FOR_uC
 #include<avr/io.h>
 #include<util/delay.h>
+#endif /* FOR_uC */
 
 /* uncomment the following #includes if compiled for PC */
-//#include<stdio.h>
+#ifdef FOR_PC
+#include<stdio.h>
+#endif /* FOR_PC */
 
 #define LOCO_CONT_BEGIN 00                               /* 00 */
 #define LOCO_CONT_LEN   10
@@ -55,18 +60,18 @@
 #define ARM_DOWN          ARM_CONT_BEGIN + 04
 
 /* macros for debugging in PC */
-#ifdef DEBUG_PC
+#ifdef FOR_PC
 #define DBG_PRINT(format, args...) printf(format, ##args)
 #else
 #define DBG_PRINT(format, args...) 
-#endif /* DEBUG_PC*/
+#endif /* FOR_PC*/
 
 /* macros for debugging in uC */
-#ifdef DEBUG_uC
+#ifdef FOR_uC
 #define DBG_WRITE(val) USART_Write(val)
 #else
 #define DBG_WRITE(val) 
-#endif /* DEBUG_PC*/
+#endif /* FOR_PC*/
 
 /* shifts the binary content of 'val' by 'bits' to the left */
 #define LSHIFT(val, bits) ((val) << (bits))

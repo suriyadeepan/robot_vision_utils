@@ -2,12 +2,12 @@
 
 if [ $1 = uC ]; then
     avr-gcc -O1 -mmcu=atmega16 -o main.elf main.c
-    avr-objcopy -O ihex main.elf main.hex
+    avr-objcopy -j .text -O ihex main.elf main.hex
 elif [ $1 = PC ]; then
-    make
+    make CFLAGS=-DFOR_PC=1
 elif [ $1 = clean ]; then
-    rm -f *.[oa]
-    rm -f *.hex *.elf *.srec *.map
+    rm -f $2 *.[oa]
+    rm -f $2 *.hex *.elf *.srec *.map
 fi
 
 
