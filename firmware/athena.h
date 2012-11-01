@@ -8,15 +8,16 @@
 #ifndef _ATHENA_H_
 #define _ATHENA_H_
 
+/* un/comment the following #defines for debugging purpose*/
+//#define DEBUG_PC 1 
+//#define DEBUG_uC 1
 
-/* compiled for testing in pc. so needed to be commented
-
+/* uncomment the following #includes if compiled for uC */
 #include<avr/io.h>
-#include<util/dealy.h>
+#include<util/delay.h>
 
-*/
-
-#include<stdio.h>
+/* uncomment the following #includes if compiled for PC */
+//#include<stdio.h>
 
 #define LOCO_CONT_BEGIN 00                               /* 00 */
 #define LOCO_CONT_LEN   10
@@ -53,6 +54,42 @@
 #define ARM_UP            ARM_CONT_BEGIN + 03
 #define ARM_DOWN          ARM_CONT_BEGIN + 04
 
+/* macros for debugging in PC */
+#ifdef DEBUG_PC
+#define DBG_PRINT(format, args...) printf(format, ##args)
+#else
+#define DBG_PRINT(format, args...) 
+#endif /* DEBUG_PC*/
+
+/* macros for debugging in uC */
+#ifdef DEBUG_uC
+#define DBG_WRITE(val) USART_Write(val)
+#else
+#define DBG_WRITE(val) 
+#endif /* DEBUG_PC*/
+
+/* shifts the binary content of 'val' by 'bits' to the left */
+#define LSHIFT(val, bits) ((val) << (bits))
+/* shifts the binary content of 'val' by 'bits' to the right */
+#define RSHIFT(val, bits) ((val) >> (bits))
+
+/***************************************************
+ * gives the bit-value of the arguement 'x'        *
+ * e.g: for x = 0, BVAL(x) --> 1                   *
+ *          x = 1, BVAL(x) --> 2                   *
+ *          x = 2, BVAL(x) --> 4                   *
+ ***************************************************/
+#define BVAL(x) (1 << (x)) /* shifts 1 x bits to the left */
+
+/* Interrupt handlers                           *
+ * defined in athena.c files.                   *
+ *    +ISR(USART_RXC_vect);                     *
+ */
+
+/* USART - functions */
+int USART_init(int baud);
+
+
 /* function prototypes with similar signatures atleast for each category */
 /*locomotion - category */
 int loco_forward();
@@ -74,6 +111,7 @@ int arm_up();
 int arm_down();
 
 int USART_receive();
+int USART_write(int val);
 
 typedef int (*Fp_Control)();
 

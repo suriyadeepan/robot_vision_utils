@@ -4,13 +4,18 @@
  * Date    : 28/10/2012       * 
  ******************************/
 #include "athena.h"
+#define F_CPU 1200000UL
 
 int USART_receive()
 {
+
+#ifdef DEBUG_PC
   int num;
   printf("\nEnter a number ");
   scanf("%d",&num);
   return num;
+
+#endif /* DEBUG_PC */
 }
 
 int main()
@@ -22,8 +27,10 @@ int main()
 */
   
   while(1){
-    command = USART_receive();
-    if(command > 0){
+       
+#ifdef DEBUG_PC
+    /* used when compiling for testing in PC, it is uncommon, but I use */
+   if(command > 0){
       
       if(command <= LOCO_CONT_END){
 	command = command - (LOCO_CONT_BEGIN+1);
@@ -41,7 +48,8 @@ int main()
 	continue;
       }
 
-    }/* if command > 0 */
+   }
+#endif  /* DEBUG_PC */
 
   }/* end of while */
 
