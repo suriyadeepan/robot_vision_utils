@@ -1,0 +1,12 @@
+-> trying to compile a simple program (led blinking)
+	which includes <avr/io.h> header with gcc
+
+-> compiled LED blink program (900 ms) (led_blink.c) 
+	with -Os optimization and obtained led_blink.hex
+		
+
+-> Adjusted the FCPU value in led_blink.c based on FUSE
+	
+
+-> Uploaded the led_blink.hex to uC (atmega16-> dev board)
+	using avrdude
