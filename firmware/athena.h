@@ -1,5 +1,6 @@
 /************************************************ 
  * Program : Firmware for uC                    *
+ * File	   : athena.h                           *
  * Author  : Selvakumar                         *
  * Blog    : making-of-athena.blogspot.in       *
  * Date    : 28/10/2012                         * 
@@ -24,15 +25,15 @@
 #include<stdio.h>
 #endif /* FOR_PC */
 
-#define LOCO_CONT_BEGIN 00                               /* 00 */
+#define LOCO_CONT_BEGIN 00 + 1                           /* 00 */
 #define LOCO_CONT_LEN   10
 #define LOCO_CONT_END   LOCO_CONT_BEGIN + LOCO_CONT_LEN  /* 10 */
 
-#define CAM_CONT_BEGIN  LOCO_CONT_END                    /* 10 */
+#define CAM_CONT_BEGIN  LOCO_CONT_END + 1                /* 10 */
 #define CAM_CONT_LEN    10
 #define CAM_CONT_END    CAM_CONT_BEGIN + CAM_CONT_LEN    /* 20 */
 
-#define ARM_CONT_BEGIN  CAM_CONT_END                     /* 20 */
+#define ARM_CONT_BEGIN  CAM_CONT_END + 1                 /* 20 */
 #define ARM_CONT_LEN    10
 #define ARM_CONT_END    ARM_CONT_BEGIN + ARM_CONT_LEN    /* 30 */
 
@@ -87,42 +88,42 @@
 #define BVAL(x) (1 << (x)) /* shifts 1 x bits to the left */
 
 /* Interrupt handlers                           *
- * defined in athena.c files.                   *
+ * defined in athena.c file.                    *
  *    +ISR(USART_RXC_vect);                     *
  */
 
 /* USART - functions */
-int USART_init(int baud);
+int USART_init ( int baud )  ;
 
 
 /* function prototypes with similar signatures atleast for each category */
 /*locomotion - category */
-int loco_forward();
-int loco_backward();
-int loco_turn_right();
-int loco_turn_left();
-int loco_turn_around();
+int loco_forward ()    ;
+int loco_backward ()   ;
+int loco_turn_right () ;
+int loco_turn_left ()  ;
+int loco_turn_around ();
 
 /*camera - category */
-int cam_look_up();
-int cam_look_down();
-int cam_look_right();
-int cam_look_left();
+int cam_look_up ()    ; 
+int cam_look_down ()  ;
+int cam_look_right () ;
+int cam_look_left ()  ;
 
 /*arm - category */
-int arm_contract();
-int arm_dilate();
-int arm_up();
-int arm_down();
+int arm_contract () ;
+int arm_dilate ()   ;
+int arm_up ()       ;
+int arm_down ()     ;
 
-int USART_receive();
-int USART_write(int val);
+int USART_receive () ;
+int USART_write ( int val ) ;
 
-typedef int (*Fp_Control)();
+typedef int ( *Fp_Control ) ( );
 
-Fp_Control loco_control[LOCO_CONT_LEN];
-Fp_Control cam_control[CAM_CONT_LEN];
-Fp_Control arm_control[ARM_CONT_LEN];
+Fp_Control loco_control[ LOCO_CONT_LEN ] ;
+Fp_Control cam_control[ CAM_CONT_LEN  ] ;
+Fp_Control arm_control[ ARM_CONT_LEN  ] ;
 
 
 #endif /* _ATHENA_H_ */
