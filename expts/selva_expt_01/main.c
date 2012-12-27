@@ -10,7 +10,7 @@ Expt01 by Selvakumar - 24/09/2012
 int main(int argc, char* argv[])
 {
 	// Open the file "lena.jpg".
-	IplImage* img = cvLoadImage("lena.png", CV_LOAD_IMAGE_UNCHANGED);
+	IplImage* img = cvLoadImage("lena.jpg", CV_LOAD_IMAGE_UNCHANGED);
 	if (!img) {
 		printf("Error: Could not open the image file! \n");
 		exit(1);

@@ -1,77 +1,63 @@
-/****************************** 
- * Program : Firmware for uC  *
- * Author  : Selvakumar       *
- * Date    : 28/10/2012       * 
- ******************************/
+
+/************************************************ 
+ * Program : Firmware for uC  					*
+ * File	   : main.c           					*
+ * Author  : Selvakumar       					*
+ * Blog    : making-of-athena.blogspot.in       *
+ * Date    : 28/10/2012       					* 
+ ************************************************/
 
 #include "athena.h"
+#define F_CPU 1200000UL
 
-int USART_receive()
+#ifdef FOR_PC
+receive ()
 {
   int num;
-  printf("\nEnter a number ");
-  scanf("%d",&num);
-  return num;
+  printf ( "\nEnter a number " ) ;
+  scanf ( "%d" , &num ) ;
+  return num ;
 }
 
-/* array of function pointers        *
- * datatype (*fp[])(argument list);  *
- */
+#endif /* FOR_PC */
 
-/* TODO: will be moved to athena.c soon */
-int (*loco_control[])() = {  loco_forward,
-			     loco_backward,
-			     loco_turn_right,
-			     loco_turn_left,
-			     loco_turn_around 
-                          };
-
-
-int (*arm_control[])() = {  arm_contract, 
-			    arm_dilate,
-			    arm_up,
-			    arm_down
-                          };
-
-
-
-int (*cam_control[])() = {  cam_look_up,
-			    cam_look_down,
-			    cam_look_left,
-			    cam_look_right
-                          };
-
-
-int main()
+int main ()
 {
-  int command;
+  int command ;
+
 
 /* uncomment init() when it is defined 
   init();
 */
   
-  while(1){
-    command = USART_receive();
-    if(command > 0){
+  while ( 1 ) {
+       
+#ifdef FOR_PC
+    /* used when compiling for testing in PC, it is uncommon, but I use */
+   command = receive ();
+   if ( command > 0 ) {
       
+      if ( command <= LOCO_CONT_END ) {
+	command = command - ( LOCO_CONT_BEGIN + 1 ) ;
+	loco_control [ command ] () ;
+	continue ;
 
-      if(command <= LOCO_CONT_END){
-	command = command - (LOCO_CONT_BEGIN+1);
-	loco_control[command]();
-	continue;
       }
-      else if (command <= CAM_CONT_END){
-	command = command - (CAM_CONT_BEGIN+1);
-	cam_control[command]();
-	continue;
-      }
-      else if(command <= ARM_CONT_END){
-	command = command - (ARM_CONT_BEGIN+1);
-	arm_control[command]();
+      else if ( command <= CAM_CONT_END ) {
+	command = command - ( CAM_CONT_BEGIN + 1 ) ;
+	cam_control [ command ] ();
 	continue;
       }
 
-    }/* if command > 0 */
+      else if ( command <= ARM_CONT_END ) {
+	command = command - (ARM_CONT_BEGIN+1) ;
+	arm_control [ command ] () ;
+	continue ;
+
+      }
+
+   }
+#endif  /* FOR_PC */
 
   }/* end of while */
 

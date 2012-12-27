@@ -1,0 +1,14 @@
+
+EDITOR=nano
+EXPTS=$PROJ_PATH/expts/
+
+if [ -d $EXPTS/$1 ]
+then
+	echo "name already used choose another one"
+else
+	mkdir -vp  $EXPTS/$1
+	touch $EXPTS/$1/$1.c
+	ls -l $EXPTS/$1 $EXPTS/$1/$1.c
+	$EDITOR $PROJ_PATH/expts/$1/$1.c
+
+fi

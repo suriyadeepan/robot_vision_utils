@@ -1,0 +1,15 @@
+#!/bin/sh
+export PATH=~/repo/athena/.utils:$PATH
+rm -R -I -f *~
+
+if [ -z "$PROGB" ]
+then
+	export PROGB=/usr
+fi
+
+export PROJ_PATH=$HOME/repo/athena
+export PKG_CONFIG_PATH=$PROGB/lib/pkgconfig:$PKG_CONFIG_PATH
+export LD_LIBRARY_PATH=$PROGB/lib:$LD_LIBRARY_PATH
+
+echo "PROJ_PATH=$PROJ_PATH"
+gnome-terminal --title=Athena
