@@ -1,10 +1,10 @@
 
 /************************************************ 
- * Program : Firmware for uC  					*
- * File	   : main.c           					*
- * Author  : Selvakumar       					*
+ * Program : Firmware for uC  			*
+ * File	   : main.c           			*
+ * Author  : Selvakumar       			*
  * Blog    : making-of-athena.blogspot.in       *
- * Date    : 28/10/2012       					* 
+ * Date    : 28/10/2012       			* 
  ************************************************/
 
 #include "athena.h"
