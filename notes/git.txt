@@ -9,5 +9,6 @@
 	- edit the portion b/w <<<<<< and >>>>>> as u wish
 	- commit the change while in branch-1
 	- checkout to branch-2 and make ny change and commit the change
-	- checkout to branch-1 and merge the  branch
+	- checkout to branch-1 and merge the branch using $ git merge branch-2
+	- this will merge branch-2 to branch-1
 	
