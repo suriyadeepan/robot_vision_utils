@@ -1,11 +1,5 @@
 #!/bin/sh
-<<<<<<< HEAD
-main:
-	gcc -o main main.c
 
-clean:	
-	rm *.[oa]
-=======
 main: main.o athena.o
 	gcc -o main main.o athena.o
 
@@ -17,4 +11,3 @@ athena.o: athena.c athena.h
 
 clean:	
 	rm *.[oa] main
->>>>>>> 4ca006d78148e4739b4519c50cd815a39315fe39
