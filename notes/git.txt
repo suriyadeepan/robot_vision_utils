@@ -1,0 +1,13 @@
++ merging
+	- edit the reported files 
+		<<<<<< branch-1-name
+		  // some code 01
+		========
+		  // some code 02
+		>>>>>> branch-2-name
+
+	- edit the portion b/w <<<<<< and >>>>>> as u wish
+	- commit the change while in branch-1
+	- checkout to branch-2 and make ny change and commit the change
+	- checkout to branch-1 and merge the  branch
+	
