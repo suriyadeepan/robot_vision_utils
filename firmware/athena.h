@@ -40,7 +40,7 @@
 /************************************************************
  * Actual operations                                        *
  * they are used as indices for                             *
- * <category>_<opertion>_<dirction> function pointer array  *
+ * <category>_<opertion>_<direction> function pointer array  *
  ************************************************************/
 
 /*  LOCOMOTION OPERATIONS */
@@ -124,6 +124,7 @@ typedef int ( *Fp_Control ) ( );
 Fp_Control loco_control[ LOCO_CONT_LEN ] ;
 Fp_Control cam_control[ CAM_CONT_LEN  ] ;
 Fp_Control arm_control[ ARM_CONT_LEN  ] ;
+
 
 
 #endif /* _ATHENA_H_ */
