@@ -1,0 +1,7 @@
+[capacitor] capacitor value - convention
+	103 means 10 000   picofarads
+	104 means 10 0000  picofarads
+	
+	capacitors below 1000 picofarads do not use this convention.
+	they directly specify the capacitance value like 22 for 22pf
+
