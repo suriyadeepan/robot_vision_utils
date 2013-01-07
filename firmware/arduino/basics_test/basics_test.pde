@@ -1,15 +1,15 @@
 
-char cmd[5];
-
-void setup ()
+void setup()
 {
-Serial.begin(9600);
-
+     Serial.begin(9600); 
 }
 
-void loop ()
-{
 
+void loop()
+{
+  
+         char cmd[5];
+  
     cmd[0] = Serial.read ();
     
     if(cmd[0] == '$' ) 
@@ -30,12 +30,13 @@ if ( strncmp ( cmd, "$LMF", 5 ) == 0 ) {
 //forward ();
 
 }
-else if ( strncmp ( cmd, "$LMB", 5 ) == 0 ){
+else if ( strncmp ( cmd, "$LMB", 5 ) == 0 )
+{
 
 //backward ();
 
 }
 
-
-
+else{}
+ 
 }
