@@ -1,0 +1,29 @@
+DTMF interfacing with Arduino
+
+void setup()
+{
+  pinMode(4,INPUT);
+  
+  pinMode(11,OUTPUT);
+  
+  Serial.begin(9600);
+}
+
+void loop()
+{
+	char p4 = digitalRead(4);
+	char p5 = digitalRead(5);
+	Serial.println(p4);
+	Serial.println(p5);
+/*	
+  if(digitalRead(4)!=LOW)
+  {
+    digitalWrite(11,HIGH);
+    Serial.println("Receiving");
+  }
+  
+  else 
+  Serial.println("Not receiving");*/
+}
+
+ 
