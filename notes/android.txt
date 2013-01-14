@@ -1,0 +1,9 @@
+
+* Android environment setup - in Fedora
+
+[https://fedoraproject.org/wiki/HOWTO_Setup_Android_Development]
+
+
+Download 32bit libs:
+
+yum install glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
