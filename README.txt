@@ -8,7 +8,7 @@ i think it works for now
 restart it
 he he :D
 
-athena--+--
+root--+--
 	+-- expts/
 	+-- firmware/
 	+-- notes/
